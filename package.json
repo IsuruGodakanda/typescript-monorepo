@@ -1,0 +1,22 @@
+{
+  "name": "typescript-monorepo",
+  "version": "1.0.0",
+  "description": "Root directory.",
+  "main": "index.js",
+  "author": "Isuru Godakanda",
+  "license": "MIT",
+  "private": "true",
+  "workspaces": [
+    "packages/apps/*",
+    "packages/services/*",
+    "packages/support/*"
+  ],
+  "scripts": {
+    "setup": "yarn && lerna bootstrap",
+    "start": "lerna run --parallel start",
+    "reset": "lerna clean && yarn setup"
+  },
+  "devDependencies": {
+    "lerna": "^5.0.0"
+  }
+}
