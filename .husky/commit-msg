@@ -11,10 +11,12 @@ MERGE_COMMIT_MSG="Merge branch 'main' into"
 COMMIT_REGEX="^TM-[0-9][0-9]?[0-9]?[0-9]?[[:space:]]-[[:space:]][a-zA-Z0-9[:space:]!@#$&()-.+,/]{5}.*"
 MERGE_REGEX="^${MERGE_COMMIT_MSG}[[:space:]]${LOCAL_BRANCH_NAME}"
 
-if ! head -1 "$1" | grep -qE $COMMIT_REGEX; then
-    echo "Aborting commit. Your commit message is invalid. \n" >&2
-    echo $FORMAT_ERROR_MSG
-    exit 1
+if head -1 "$1" | grep -qE $COMMIT_REGEX; then
+  echo "Commit suceeded!"
+else 
+  echo "Aborting commit. Your commit message is invalid. \n" >&2
+  echo $FORMAT_ERROR_MSG
+  exit 1
 fi
 
 # #!/usr/bin/env sh
