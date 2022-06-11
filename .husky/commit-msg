@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 if ! head -1 "$1" | grep -qE "^TM-[0-9][0-9]?[0-9]?[0-9]?[[:space:]]-[[:space:]][a-zA-Z0-9[:space:]!@#$&()-.+,/]{5}.*"; then
     echo "Aborting commit. Your commit message is invalid." >&2
     exit 1
