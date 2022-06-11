@@ -14,9 +14,12 @@
   "scripts": {
     "setup": "yarn && lerna bootstrap",
     "start": "lerna run --parallel start",
-    "reset": "lerna clean -y && yarn setup"
+    "test": "lerna run --parallel test",
+    "reset": "lerna clean -y && yarn setup",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "lerna": "^5.0.0"
+    "lerna": "^5.0.0",
+    "husky": "^8.0.0"
   }
 }

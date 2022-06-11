@@ -6,7 +6,8 @@
   "author": "Isuru Godakanda",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && node dist/server.js"
+    "start": "tsc && node dist/server.js",
+    "precommit": "echo 'Services precommit running'"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Isuru Godakanda",
   "license": "MIT",
+  "scripts": {
+    "precommit": "echo 'Support precommit running'"
+  },
   "devDependencies": {
     "typescript": "^4.7.3"
   }

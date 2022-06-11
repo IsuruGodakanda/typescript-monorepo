@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+COMMIT_MSG=$(cat "${1:?Missing commit message file}")
+LOCAL_BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD)"
+
+FORMAT="TM-XXXX (Ticket number) - commit message (commit message should be at least 5 characters long)"
+FORMAT_ERROR_MSG="Commit message format should be: \n\"${FORMAT}\""
+MERGE_COMMIT_MSG="Merge branch 'main' into"
+
+COMMIT_REGEX="^TM-[0-9][0-9]?[0-9]?[0-9]?[[:space:]]-[[:space:]][a-zA-Z0-9[:space:]!@#$&()-.+,/]{5}.*"
+MERGE_REGEX="^${MERGE_COMMIT_MSG}[[:space:]]${LOCAL_BRANCH_NAME}"
+
+if head -1 "$1" | grep -qE $COMMIT_REGEX; then
+  echo "Commit suceeded!"
+elif head -1 "$1" | grep -qE $MERGE_REGEX; then
+  echo "Merge suceeded!"
+else 
+  echo "Aborting commit: \"${COMMIT_MSG}\"." >&2
+  echo "Your commit message is invalid. \n" >&2
+  echo $FORMAT_ERROR_MSG
+  exit 1
+fi
